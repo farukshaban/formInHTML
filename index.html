@@ -1,0 +1,164 @@
+<!Doctype Html>  
+<Html>     
+<Head>      
+<Title>     
+Invoice Receipt form
+</Title>  
+</Head>  
+<Body>   
+  
+<br>    
+<form>    
+<label> Firstname </label>           
+<input type="text" name="firstname" size="15"/> <br> <br>   
+<label> Lastname: </label>           
+<input type="text" name="lastname" size="15"/> <br> <br>    
+<label> 
+<label> ID/Passport number: </label>           
+<input type="text" name="ID/Passport number" size="15"/> <br>  <br>    
+<label>
+Phone :    
+</label>      
+<input type="text" name="phone" size="10"> <br> <br>    
+Address    
+<br>    
+<textarea cols="80" rows="5" value="address">    
+</textarea>    
+<br>   
+Vehicle Type :    
+</label>     
+<select>    
+<option value="Gas">Gas</option>    
+<option value="Petrol">Petrol</option>    
+</select>    
+<br>    
+<br>    
+<label>     
+Vehicle Model :    
+</label>
+<select>    
+<option value="Ferrari">Ferrari</option>    
+<option value="Mercedes">Mercedes</option>  
+</select>
+<br>
+<head>
+    <script type="text/javascript">
+        function GetDays(){
+                var dropdt = new Date(document.getElementById("check_out").value);
+                var pickdt = new Date(document.getElementById("check_in").value);
+                return parseInt((dropdt - pickdt) / (24 * 3600 * 1000)*1500);
+        }
+
+        function cal(){
+        if(document.getElementById("check_out")){
+            document.getElementById("numdays2").value=GetDays();
+        }  
+    }
+
+    </script>
+</head> 
+<body>
+    <div id="reserve_form">
+
+    <div id="checkin_date"><p><label class="form">Check in Date:</label><input type="date" class="textbox" id="check_in" name="checkin_date" onchange="cal()"</p></div>
+
+    <div id="checkout_date"><p><label class="form">Check out Date:</label><input type="date" class="textbox" id="check_out" name="checkout_date" onchange="cal()"/></p></div>
+
+    <div id="numdays"><label class="form">Total cost(days * 1500 MKD): </label><input type="text" class="textbox" id="numdays2" name="numdays"/></div>
+
+    </div>
+<br>
+<fieldset class="paymethodfieldset">
+<div>
+    <h2>          
+        <input type=radio name=formOfPayment id=formOfPayment value=CashPayment />
+            Cash Payment</h2>             
+</div>
+</fieldset>
+<br>
+<title>Card Payment</title>
+</head>
+<body>
+<form id="CardPay" name="CardPay">   
+    <fieldset class="paymethodfieldset">
+            <div>
+            <h2>          
+                <input type=radio name=formOfPayment id=formOfPayment value=CreditCard />
+                    Pay by Credit Card</h2>             
+        </div>      
+        
+        <dt>Card Number</dt>
+        <dd>
+            <input type="text" id="cc_no" name="cc_no" value="4111 1111 1111 1111"/>
+            <span id="err_cc_no" class="jserror"> </span>
+        </dd>            
+        <dt>Expiry Date</dt>
+        <dd>
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><select id="cc_exp_mm" name="cc_exp_mm">
+                            <option value="">Month</option>
+                            <option value="1" selected="selected">March</option>                                 
+                            <option value="2">February</option>                              
+                            <option value="3">March</option>                           
+                            <option value="4">April</option>                           
+                            <option value="5">May</option>                            
+                            <option value="6">June</option>                            
+                            <option value="7">July</option>                           
+                            <option value="8">August</option>                             
+                            <option value="9">September</option>                     
+                            <option value="10">October</option>                              
+                            <option value="11">November</option>                             
+                            <option value="12">December</option>                             
+                        </select></td>                         
+                    <td width="20">&nbsp;</td>                         
+                    <td><select id="cc_exp_yyyy" name="cc_exp_yyyy">
+<option value="">Month</option>
+                            <option value="default" selected="selected">2022</option>                                                      
+                            <option value="2022">2022</option>                           
+                            <option value="2023">2023</option>                             
+                            <option value="2024">2024</option>                     
+                            <option value="2025">2025</option>                              
+                            <option value="2026">2026</option>                             
+                            <option value="2027">2027</option>
+<option value="2028">2028</option>                             
+                            <option value="2029">2029</option>
+<option value="2030">2030</option>
+                        </select>                         
+                    </td>                     
+                </tr>                 
+            </table>             
+        </dd>
+        <dt>Security Code</dt>
+        <dd>
+            <input id="cvv" type="text" size="5" name="cvv" value="111"/>
+        </dd>
+        </dl>     
+</fieldset>  
+<script>
+    function disableSubmit() {
+     document.getElementById("submit").disabled = true;
+    }
+   
+     function activateButton(element) {
+   
+         if(element.checked) {
+           document.getElementById("submit").disabled = false;
+          }
+          else  {
+           document.getElementById("submit").disabled = true;
+         }
+   
+     }
+   </script>
+   </head>
+   
+   <body onload="disableSubmit()">
+    <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)">  I Agree Terms & Coditions
+   <br><br>
+     <input type="submit" name="submit" id="submit">   
+
+
+</body>   
+</Body>   
+</Html>  
